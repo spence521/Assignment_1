@@ -51,4 +51,6 @@ namespace Assignment_1
         //    return decimal.Parse(((-P * Math.Log(P, 2)) - (N * Math.Log(N, 2))).ToString());
         //}
     }
+
+
 }
