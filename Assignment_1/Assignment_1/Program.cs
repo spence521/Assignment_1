@@ -11,6 +11,8 @@ namespace Assignment_1
     {
         static void Main(string[] args)
         {
+            Data data;
+
             #region Passing in parameters
             if (args.Length == 0)
             {
@@ -18,23 +20,31 @@ namespace Assignment_1
                 return;
             }
             StreamReader reader = File.OpenText(args[0]);
+            if (args.Length > 1)
+            {
+                StreamReader reader2 = File.OpenText(args[1]);
+                data = new Data(reader, reader2);
+                Console.WriteLine("\nThe Error of your Decision Tree with the data provided as the 2nd parameter is: \n\t" + data.Error + "\n");
+            }
+            else
+            {
+                data = new Data(reader);
+                data.TraverseTree();
+                Console.WriteLine("\nThe depth of your tree is: \n" + data.Depth + "\n");
+            }
             #endregion
 
             #region Non-arguments
             //string startupPath = System.IO.Directory.GetCurrentDirectory();
             //StreamReader reader = File.OpenText(startupPath + @"\updated_train.txt");
-            //Console.WriteLine(startupPath + @"\training.data");
+            //StreamReader reader2 = File.OpenText(startupPath + @"\updated_train.txt");
+            //data = new Data(reader, reader2);
+            //Console.WriteLine(data.Error);
+            //Console.ReadKey(false);
             #endregion
-            Data data = new Data(reader);
-            //Console.WriteLine(data.Depth);
-            data.TraverseTree();
-            Console.WriteLine(data.Error);
-            // helper(0.66257668711656437, 0.33742331288343558);
-            //Console.WriteLine(tree.Entropy);
             //tree.PrintTrainingData();
             //tree.PrintData();
             //tree.display();
-            // Console.ReadKey(false);
         }
         //static decimal helper(double P, double N)
         //{

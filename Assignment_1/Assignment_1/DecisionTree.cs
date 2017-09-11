@@ -422,5 +422,56 @@ namespace Assignment_1
                 RightTree.TraverseTree();
             }
         }
+        public int DetermineError(ref List<TrainingData> TestData)
+        {
+            int errors = 0;
+            foreach (var item in TestData)
+            { //for each item, i want to traverse down the tree
+                errors += DetermineSubError(item);
+            }
+            return errors;
+        }
+        private int DetermineSubError(TrainingData item)
+        {
+            if (IsLeaf)
+            {
+                if (item.Label != Value) { return 1; }
+                else { return 0; }
+            }
+            else
+            {
+                if (Feature == Features.FirstBigger)
+                {
+                    if (item.FirstBigger) { return RightTree.DetermineSubError(item); }
+                    else { return LeftTree.DetermineSubError(item); }
+                }
+                else if (Feature == Features.MiddleName)
+                {
+                    if (item.MiddleName) { return RightTree.DetermineSubError(item); }
+                    else { return LeftTree.DetermineSubError(item); }
+                }
+                else if (Feature == Features.FirstStartEnd)
+                {
+                    if (item.FirstStartEnd) { return RightTree.DetermineSubError(item); }
+                    else { return LeftTree.DetermineSubError(item); }
+                }
+                else if (Feature == Features.FirstAlpha)
+                {
+                    if (item.FirstAlpha) { return RightTree.DetermineSubError(item); }
+                    else { return LeftTree.DetermineSubError(item); }
+                } 
+                else if (Feature == Features.FirstVowel)
+                {
+                    if (item.FirstVowel) { return RightTree.DetermineSubError(item); }
+                    else { return LeftTree.DetermineSubError(item); }
+                }
+                else  //(Feature == Features.LastEven) 
+                {
+                    if (item.LastEven) { return RightTree.DetermineSubError(item); }
+                    else { return LeftTree.DetermineSubError(item); }
+                }
+            }
+        }
+
     }
 }
