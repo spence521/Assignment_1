@@ -293,8 +293,6 @@ namespace Assignment_1
                 FirstVowel_LeftLeafList.Count == 1 && LastEven_LeftLeafList.Count == 1)
             {
                 IsLeftLeaf = true;
-                var qaz = LeftData.GroupBy(m => m.Label).OrderByDescending(r => r.Count()).Take(2).Select(p => p.Key).ToList();
-                var maz = LeftData.GroupBy(m => m.Label).ToList();
                 LeftLeafValue = LeftData.GroupBy(m => m.Label).OrderByDescending(r => r.Count()).Take(1).Select(p => p.Key).First();
             }
 
