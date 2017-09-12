@@ -52,7 +52,7 @@ namespace Assignment_1
                 {
                     depth = Convert.ToInt32(args[4]);
                     data = new Data(reader, reader2, reader3, reader4, depth);
-                    Console.WriteLine(data.Error);
+                    Console.WriteLine("\t" + Math.Round(100 - data.Error, 3) + "% Accuracy");
                 }
                 //data.PrintData2();
             }

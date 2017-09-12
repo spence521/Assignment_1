@@ -24,13 +24,13 @@ namespace Assignment_1
             {
                 StreamReader reader2 = File.OpenText(args[1]);
                 data = new Data(reader, reader2);
-                Console.WriteLine("\t" + data.Error + "\n");
+                Console.WriteLine("\t" + Math.Round(data.Error, 3) + "% Error" + "\n");
             }
             else
             {
                 data = new Data(reader);
                 //data.TraverseTree();
-                Console.WriteLine("\nThe depth of your tree is: \n" + data.Depth + "\n");
+                Console.WriteLine("The depth of your tree is: \t" + data.Depth + "\n");
             }
             #endregion
 
