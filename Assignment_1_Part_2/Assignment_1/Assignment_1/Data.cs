@@ -23,7 +23,7 @@ namespace Assignment_1
         public int Depth { get; set; }
         public double Error { get; set; }
 
-        public Data(StreamReader r, StreamReader r2 = null)
+        public Data(StreamReader r, StreamReader r2, int depth)
         {
             data_1 = new List<Entry>();
             trainingData = new List<TrainingData>();
@@ -32,7 +32,7 @@ namespace Assignment_1
             SetData(r, r2);
             SetTrainingData(r2);
             List<TrainingData> trainingDataHelper = trainingData;
-            Tree = new DecisionTree(ref trainingDataHelper);
+            Tree = new DecisionTree(ref trainingDataHelper, depth);
             Tree.CollapseTree();
             if (r2 != null)
             {

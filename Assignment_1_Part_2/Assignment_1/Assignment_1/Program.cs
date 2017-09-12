@@ -23,19 +23,20 @@ namespace Assignment_1
                 System.Console.WriteLine("Please enter a file argument.");
                 return;
             }
-            else if (args.Length == 1)
-            {
-                reader = File.OpenText(args[0]);
-                data = new Data(reader);
-                //data.TraverseTree();
-                Console.WriteLine("\nThe depth of your tree is: \n" + data.Depth + "\n");
-            }
             else if (args.Length == 2)
             {
                 reader = File.OpenText(args[0]);
                 reader2 = File.OpenText(args[1]);
-                data = new Data(reader, reader2);
+                data = new Data(reader, reader2, int.MaxValue);
                 Console.WriteLine("\t" + data.Error + "\n");
+            }
+            else if(args.Length == 3)
+            {
+                reader = File.OpenText(args[0]);
+                reader2 = File.OpenText(args[1]);
+                depth = Convert.ToInt32(args[2]);
+                data = new Data(reader, reader2, depth);
+                Console.WriteLine("\t" + Math.Round(100 - data.Error, 3) + "% Accuracy");
             }
             else if (args.Length > 3) //at least four arguments
             {
