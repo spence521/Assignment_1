@@ -22,6 +22,7 @@ namespace Assignment_1
         public DecisionTree Tree4 { get; set; }
         public int Depth { get; set; }
         public double Error { get; set; }
+        public double StandardDeviation { get; set; }
 
         public Data(StreamReader r, StreamReader r2, int depth)
         {
@@ -120,6 +121,7 @@ namespace Assignment_1
             temp_error4 = (Convert.ToDouble(Tree4.DetermineError(ref testDataHelper)) / Convert.ToDouble(testData.Count)) * 100;
             #endregion
 
+            StandardDeviation = CalculateStandardDeviation(1-temp_error1, 1-temp_error2, 1-temp_error3, 1-temp_error4);
             //Console.WriteLine(temp_error1);
             //Console.WriteLine(temp_error2);
             //Console.WriteLine(temp_error3);
@@ -264,7 +266,14 @@ namespace Assignment_1
                 i++;
             }
         }
-        
+        private double CalculateStandardDeviation(double acc1, double acc2, double acc3, double acc4)
+        {
+            List<double> list = new List<double>() { acc1, acc2, acc3, acc4 };
+            double AverageOfValues = list.Average();
+            double SumOfValues = list.Sum(r => Math.Pow(r - AverageOfValues, 2));
+            return Math.Sqrt((SumOfValues) / (list.Count));
+        }
+
 
         private bool FirstNameBigger(string first, string last)
         {
