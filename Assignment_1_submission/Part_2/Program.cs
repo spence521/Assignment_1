@@ -53,7 +53,8 @@ namespace Assignment_1
                 {
                     depth = Convert.ToInt32(args[4]);
                     data = new Data(reader, reader2, reader3, reader4, depth);
-                    Console.WriteLine("\t" + Math.Round(100 - data.Error, 3) + "% Accuracy");
+                    Console.WriteLine("\t" + Math.Round(100 - data.Error, 3) + "% Accuracy\n"
+                        + "Standard Deviation:\t" + Math.Round(data.StandardDeviation, 4));
                 }
                 //data.PrintData2();
             }
