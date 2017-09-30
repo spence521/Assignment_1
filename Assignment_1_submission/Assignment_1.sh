@@ -2,6 +2,7 @@
 mcs Part_1/*.cs
 mv Part_1/Data.exe .
 # 1 (C)
+echo "You suck"
 echo "1 (C)"
 printf "The error for the training data is:"
 mono Data.exe updated_train.txt updated_train.txt
